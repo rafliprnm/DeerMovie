@@ -82,7 +82,7 @@
 						<?php endif ?>
 					</div>
 					<div class="mt-2">
-						<h5><i class="bi bi-heart text-danger"<?= $detail['vote'] = $detail['vote'] + 1 ?>"></i> <?= $detail['vote'] ?> votes</h5>
+						<h5><a href="<?= site_url() ?>index.php/main/buttonLike/<?= $detail['id_movie'] ?>"><i id="like" class="like bi bi-heart text-danger"></i></a> <?= $detail['vote'] ?> votes</h5>
 						<h5><i class="bi bi-star-fill text-warning"></i> <?= $detail['rating'] ?> ratings</h5>
 					</div>
 				</div>
@@ -190,7 +190,13 @@
 			$('.table').toggleClass('light-mode-active');
 		})
 
-		
+		$('.like').click(function() {
+			$('.like').toggleClass('like-color');
+		})
+		$("#like").click(function() {
+			$(this).toggleClass('bi bi-heart-fill');
+			$(this).toggleClass('bi bi-heart');
+		});
 	</script>
 
 </body>

@@ -410,5 +410,15 @@ class Main extends CI_Controller
 		$this->load->view('user/category',$data);
 	}
 
+	public function buttonLike($id){
+		$this->M_DataMovie->like($id);
+		$data=[];
+		$data['user'] = $this->M_user->userLogin();
+		$detail = $this->M_DataMovie->getDataMovieByID($id);
+		$data['detail'] = $detail;
+		$this->load->view('user/moviePage',$data);
+	}
+
+
 	
 }

@@ -11,14 +11,16 @@ class M_DataMovie extends CI_Model
 		return $query->result();
 	}
 
-	public function countMovie (){
+	public function countMovie()
+	{
 		$this->db->select('count(*) as total');
 		$this->db->from('tb_movie');
 		$query = $this->db->get();
 		return $query->result();
 	}
 
-	public function countnewMovie (){
+	public function countnewMovie()
+	{
 		$query = $this->db->query("SELECT count(year) as total FROM tb_movie WHERE year>=2020 ");
 		return $query->result();
 	}
@@ -268,5 +270,13 @@ class M_DataMovie extends CI_Model
 		$this->db->order_by("year", "DESC");
 		$query = $this->db->get("tb_movie", $limit, $start);
 		return $query->result();
+	}
+
+
+	public function like($id)
+	{
+		$this->db->set('vote', 'vote+1', FALSE);
+		$this->db->where('id_movie', $id);
+		$this->db->update('tb_movie');
 	}
 }
